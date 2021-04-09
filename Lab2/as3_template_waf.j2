@@ -15,7 +15,7 @@
         "service": {
           "class": "Service_HTTPS",
           "virtualAddresses": [
-            "{{ private_ip }}"
+            "{{ private_ip_address }}"
           ],
           "profileMultiplex": {
                     "bigip": "/Common/oneconnect"
@@ -37,15 +37,15 @@
             "servicePort": 80,
             "serverAddresses": [
               {% set comma = joiner(",") %}
-              {% for mem in pool_members %}
-                {{comma()}} "{{  hostvars[mem]['private_ip']  }}"
+              {% for mem in poolMembers %}
+                {{comma()}} "{{  hostvars[mem]['private_ip_address']  }}"
               {% endfor %}
             ]
           }]
         },
         "My_ASM_Policy": {
         "class": "WAF_Policy",
-        "url": "https://github.com/mysidlabs/f5-agility-2021-tower-labs/blob/main/Lab2/awaf.xml",
+        "url": "https://raw.githubusercontent.com/mysidlabs/f5-agility-2021-tower-labs/main/Lab2/awaf.xml",
         "ignoreChanges": true
         },
         "webtls": {
