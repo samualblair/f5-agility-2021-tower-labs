@@ -5,7 +5,7 @@
   gather_facts: false
 
   vars:
-    poolMembers: "{{ groups['webservers'] }}"
+    poolMembers: "{{ groups['tag_webservers'] }}"
 
   tasks:
     - name: Push AS3
