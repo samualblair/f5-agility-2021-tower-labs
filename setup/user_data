@@ -9,3 +9,10 @@ tmos_declared:
   icontrollx_trusted_sources: false
   icontrollx_package_urls:
     - "https://github.com/F5Networks/f5-appsvcs-extension/releases/download/v3.27.0/f5-appsvcs-3.27.0-3.noarch.rpm"
+  post_onboard_enabled: true
+  post_onboard_commands:
+    - tmsh modify sys provision ltm level nominal
+    - tmsh modify sys provision asm level nominal
+    - tmsh modify sys ntp servers add { pool.ntp.org }
+    - tmsh restart sys service restnoded
+    
